@@ -1,6 +1,19 @@
 import type { Metadata } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { FAQS } from '@/lib/faqData';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   title: 'Venom Finance — Institutional Algorithmic Cryptocurrency Trading',
@@ -77,7 +90,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -92,7 +105,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
-      <body className="min-h-screen bg-[#090D16] text-[#F8FAFC] antialiased" suppressHydrationWarning>
+      <body
+        className="min-h-screen bg-[#070A12] text-slate-100 font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-300"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
