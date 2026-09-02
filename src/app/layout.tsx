@@ -77,7 +77,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -92,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
-      <body className="min-h-screen bg-[#090D16] text-[#F8FAFC] antialiased">
+      <body className="min-h-screen bg-[#090D16] text-[#F8FAFC] antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>

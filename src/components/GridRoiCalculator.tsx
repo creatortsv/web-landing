@@ -90,7 +90,7 @@ export const GridRoiCalculator: React.FC = () => {
                     Allocated Capital
                   </label>
                   <span className="text-base font-bold font-mono text-white">
-                    ${investmentUsd.toLocaleString()} USD
+                    ${investmentUsd.toLocaleString('en-US')} USD
                   </span>
                 </div>
                 <input
