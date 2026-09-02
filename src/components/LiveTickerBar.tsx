@@ -63,25 +63,32 @@ export const LiveTickerBar: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#070A12] border-b border-[#1E293B] py-1.5 px-4 text-xs font-mono overflow-x-auto select-none">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 min-w-[600px]">
-        <div className="flex items-center gap-2 text-slate-400">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[11px] uppercase tracking-wider font-semibold">Live Market Feeds</span>
+    <div className="w-full bg-[#070A12]/95 backdrop-blur-md border-b border-slate-800/80 py-2.5 px-4 sm:px-6 select-none">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-2.5 text-slate-300 shrink-0">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+          </span>
+          <span className="text-xs uppercase tracking-widest font-semibold text-slate-300">Live Market Feeds</span>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 sm:gap-8 shrink-0">
           {tickers.map((t) => {
             const isPositive = t.changePct >= 0;
             return (
-              <div key={t.symbol} className="flex items-center gap-2">
-                <span className="text-slate-300 font-semibold">{t.symbol}</span>
-                <span className="text-white font-mono">${t.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+              <div key={t.symbol} className="flex items-center gap-2.5">
+                <span className="text-xs font-bold text-slate-200 tracking-wide font-sans">{t.symbol}</span>
+                <span className="text-xs sm:text-sm font-semibold font-mono text-white">
+                  ${t.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </span>
                 <span
-                  className={`flex items-center text-[11px] font-bold ${
-                    isPositive ? 'text-emerald-400' : 'text-rose-400'
+                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-bold font-mono ${
+                    isPositive
+                      ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30'
+                      : 'bg-rose-950/60 text-rose-400 border border-rose-500/30'
                   }`}
                 >
-                  {isPositive ? <TrendingUp className="h-3 w-3 mr-0.5" /> : <TrendingDown className="h-3 w-3 mr-0.5" />}
+                  {isPositive ? <TrendingUp className="h-3.5 w-3.5 mr-1" /> : <TrendingDown className="h-3.5 w-3.5 mr-1" />}
                   {isPositive ? '+' : ''}
                   {t.changePct.toFixed(2)}%
                 </span>

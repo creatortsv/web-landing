@@ -3,33 +3,130 @@
 @tailwind utilities;
 
 :root {
-  --background: #090D16;
+  --background: #070A12;
   --foreground: #F8FAFC;
   --card: #0D1322;
-  --border: #1E293B;
+  --card-elevated: #111827;
+  --card-glass: rgba(13, 19, 34, 0.75);
+  --border: rgba(51, 65, 85, 0.45);
+  --border-subtle: rgba(30, 41, 59, 0.6);
+  --border-glow: rgba(0, 245, 155, 0.35);
   --primary: #00F59B;
+  --primary-glow: rgba(0, 245, 155, 0.25);
   --accent: #00C2FF;
+  --accent-glow: rgba(0, 194, 255, 0.25);
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-body {
-  color: var(--foreground);
-  background-color: var(--background);
-  font-feature-settings: "rlig" 1, "calt" 1;
-  overflow-x: hidden;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--foreground);
+    background-color: var(--background);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Accessible Modern Focus Rings */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
 }
 
-/* Custom glowing borders & backgrounds */
+/* Ergonomic custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070A12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.6);
+  border-radius: 9999px;
+  border: 2px solid #070A12;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 155, 0.5);
+}
+
+/* Glassmorphism & Elevation utilities */
+.glass-panel {
+  background: rgba(13, 19, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.75) 0%, rgba(13, 19, 34, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card-hover {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 245, 155, 0.35);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 24px -6px rgba(0, 245, 155, 0.2);
+}
+
+/* Refined Glow Effects */
 .glow-emerald {
-  box-shadow: 0 0 25px -5px rgba(0, 245, 155, 0.25);
+  box-shadow: 0 0 35px -5px rgba(0, 245, 155, 0.3);
 }
 
 .glow-cyan {
-  box-shadow: 0 0 25px -5px rgba(0, 194, 255, 0.25);
+  box-shadow: 0 0 35px -5px rgba(0, 194, 255, 0.3);
 }
 
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 245, 155, 0.4), rgba(0, 194, 255, 0.1), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Subtle architectural grid pattern */
 .grid-bg-pattern {
-  background-size: 40px 40px;
+  background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+    linear-gradient(to right, rgba(51, 65, 85, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(51, 65, 85, 0.18) 1px, transparent 1px);
+}
+
+.radial-glow-header {
+  background: radial-gradient(circle 800px at 50% -20%, rgba(0, 245, 155, 0.12), transparent 70%);
 }
