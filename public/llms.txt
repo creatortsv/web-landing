@@ -1,0 +1,24 @@
+# Venom Finance
+
+> Institutional Algorithmic Cryptocurrency Trading Platform Engineered for High Volatility.
+
+## Overview
+Venom Finance is a non-custodial quantitative trading platform that enables traders to automate spot, infinity, and leveraged futures grid strategies across top cryptocurrency exchanges (Binance Live & Testnet, OKX, Bybit).
+
+## Core Capabilities
+- **Spot Grid Trading**: Automated volatility capture within custom arithmetic and geometric price intervals.
+- **Infinity Grid**: Continuous upside trend following with dynamic profit rebalancing and zero upper-price bound.
+- **Futures Leveraged Grid**: Long and short automated grid execution with up to 50x isolated leverage and dynamic liquidation buffers.
+- **Zero-Mock Testnet Execution**: Full strategy simulation directly against official exchange testnet order books (testnet.binance.vision).
+- **Non-Custodial Architecture**: API keys sealed with AES-256-GCM envelope encryption via Google Cloud KMS. Strict zero-withdrawal policy.
+
+## Architecture
+- **Microservices**: Go 1.25.10, gRPC, Protobuf, Apache Kafka, PostgreSQL, Redis.
+- **Frontends**: Next.js 15 App Router, React 19, Tailwind CSS.
+- **Observability**: OpenTelemetry distributed tracing with W3C TraceContext over Kafka and gRPC, Jaeger, Prometheus.
+
+## Documentation & Key Links
+- Full Documentation: https://venom.finance/docs
+- Interactive Grid Simulator: https://venom.finance/#simulator
+- Architecture & Security Deep Dive: https://venom.finance/llms-full.txt
+- GitHub Organization: https://github.com/creatortsv
