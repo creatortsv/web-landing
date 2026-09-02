@@ -75,7 +75,7 @@ export const LiveTickerBar: React.FC = () => {
             return (
               <div key={t.symbol} className="flex items-center gap-2">
                 <span className="text-slate-300 font-semibold">{t.symbol}</span>
-                <span className="text-white font-mono">${t.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                <span className="text-white font-mono">${t.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 <span
                   className={`flex items-center text-[11px] font-bold ${
                     isPositive ? 'text-emerald-400' : 'text-rose-400'
