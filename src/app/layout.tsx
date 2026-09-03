@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { FAQS } from '@/lib/faqData';
@@ -123,10 +124,6 @@ export default function RootLayout({
     <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <script
-          id="extension-error-suppressor"
-          dangerouslySetInnerHTML={{ __html: extensionErrorSuppressor }}
-        />
-        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
         />
@@ -143,6 +140,11 @@ export default function RootLayout({
         className="min-h-screen bg-[#070A12] text-slate-100 font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-300"
         suppressHydrationWarning
       >
+        <Script
+          id="extension-error-suppressor"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: extensionErrorSuppressor }}
+        />
         {children}
       </body>
     </html>
