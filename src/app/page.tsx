@@ -2,6 +2,7 @@ import * as React from 'react';
 import { LiveTickerBar } from '@/components/LiveTickerBar';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { FeaturesSection } from '@/components/FeaturesSection';
 import { StrategyShowcase } from '@/components/StrategyShowcase';
 import { GridRoiCalculator } from '@/components/GridRoiCalculator';
 import { SecurityArchitecture } from '@/components/SecurityArchitecture';
@@ -16,6 +17,7 @@ export default function LandingPage() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <FeaturesSection />
         <StrategyShowcase />
         <GridRoiCalculator />
         <SecurityArchitecture />
