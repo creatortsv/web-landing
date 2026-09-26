@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { calculateGridRoi } from '@/lib/calculatorMath';
-import { Sparkles, ArrowRight, DollarSign, Percent, RefreshCw, BarChart3 } from 'lucide-react';
+import { Sparkles, ArrowRight, DollarSign, Percent, RefreshCw, BarChart3, ShieldAlert } from 'lucide-react';
 
 const PAIR_DEFAULTS: Record<string, { lower: number; upper: number; defaultGrids: number }> = {
   'BTCUSDT': { lower: 82000, upper: 96000, defaultGrids: 28 },
@@ -182,9 +182,14 @@ export const GridRoiCalculator: React.FC = () => {
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-400 font-mono">
                   Projected Annualized Return
                 </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/30">
-                  Net of Fees
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-mono text-[10px] font-bold border border-amber-500/30">
+                    HYPOTHETICAL SIMULATION
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/30">
+                    Net of Fees
+                  </span>
+                </div>
               </div>
 
               {/* Large APR Metric */}
@@ -244,6 +249,19 @@ export const GridRoiCalculator: React.FC = () => {
                 Pre-populates parameters directly into Terminal Bot Wizard
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Regulatory Simulation Disclosure Banner */}
+        <div className="mt-14 p-5 rounded-2xl border border-amber-500/20 bg-amber-950/15 text-slate-300 text-xs font-mono flex items-start gap-3.5 max-w-4xl mx-auto shadow-lg">
+          <ShieldAlert className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <div className="font-bold text-amber-300 uppercase tracking-wider text-[11px]">
+              HYPOTHETICAL SIMULATION — Mathematical Modeling Disclosure
+            </div>
+            <p className="text-slate-300 leading-relaxed text-[11px]">
+              Yield projections and compounding returns computed by this calculator are strictly mathematical simulations based on user-supplied price bands and constant historical volatility estimations. Projections do not account for exchange rate limits, fee tier changes, order queuing delays, or market trends breaking out of grid limits. No financial advice or guaranteed yield implied.
+            </p>
           </div>
         </div>
       </div>

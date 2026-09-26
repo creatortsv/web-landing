@@ -109,8 +109,14 @@ export const StrategyShowcase: React.FC = () => {
                   {s.description}
                 </p>
 
+                {/* Regulatory Simulation Tag */}
+                <div className="flex items-center justify-between text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg mt-6">
+                  <span className="font-bold tracking-wider">SIMULATED HYPOTHETICAL BACKTEST</span>
+                  <span className="text-slate-400">Past ≠ Future</span>
+                </div>
+
                 {/* Performance Metrics */}
-                <div className="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-3 text-center">
+                <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-3 gap-3 text-center">
                   <div className="rounded-xl bg-slate-950/70 border border-slate-800/60 p-3">
                     <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Backtest</div>
                     <div className="text-lg font-bold font-mono text-emerald-400 mt-1">{s.apr}</div>
@@ -137,6 +143,19 @@ export const StrategyShowcase: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Regulatory Simulation Disclaimer Banner */}
+        <div className="mt-14 p-5 rounded-2xl border border-amber-500/20 bg-amber-950/15 text-slate-300 text-xs font-mono flex items-start gap-3.5 max-w-4xl mx-auto shadow-lg">
+          <ShieldAlert className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <div className="font-bold text-amber-300 uppercase tracking-wider text-[11px]">
+              Regulatory Simulation & Backtest Disclosure
+            </div>
+            <p className="text-slate-300 leading-relaxed text-[11px]">
+              All strategy returns, win rates, and drawdowns displayed on this platform are hypothetical simulated backtests derived from historical orderbook data under continuous liquidity assumptions. Hypothetical trading does not represent actual execution, cannot account for financial market impact or execution slippage, and is not an indicator of future performance. Capital at risk.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -73,8 +73,8 @@ export const Hero: React.FC = () => {
         {/* Live Institutional Metrics Grid */}
         <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
           <div className="glass-card glass-card-hover rounded-2xl p-6 relative overflow-hidden">
-            <div className="text-3xl sm:text-4xl font-extrabold font-mono text-white tracking-tight">$142M+</div>
-            <div className="text-xs sm:text-sm font-semibold text-slate-400 mt-2 uppercase tracking-wider">Simulated Volume</div>
+            <div className="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400 tracking-tight">Cloud KMS</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-400 mt-2 uppercase tracking-wider">Envelope Sealed</div>
           </div>
           <div className="glass-card glass-card-hover rounded-2xl p-6 relative overflow-hidden">
             <div className="text-3xl sm:text-4xl font-extrabold font-mono text-emerald-400 tracking-tight">&lt; 12ms</div>

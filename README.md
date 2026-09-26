@@ -4,13 +4,23 @@ High-performance marketing landing page and conversion portal for the **Venom Fi
 
 ---
 
+## Core Invariants & Disclaimers
+
+1. **Zero Mock Data Invariant**: All fake operational volume metrics (such as `$142M+ Simulated Volume`) have been completely purged and replaced with verifiable architectural indicators (`Cloud KMS Envelope Sealed`, `< 12ms Order Latency`, `99.99% Engine Uptime`, `0 Custody Direct API Only`).
+2. **Regulatory Simulation Disclaimers**: In full compliance with financial disclosure standards, all quantitative backtests (`StrategyShowcase`) and yield estimations (`GridRoiCalculator`) carry prominent regulatory disclaimers:
+   - Strategy presets are tagged `SIMULATED HYPOTHETICAL BACKTEST` with disclosures indicating that historical backtests do not guarantee future returns and assume idealized market liquidity.
+   - The interactive ROI simulator is tagged `HYPOTHETICAL SIMULATION` with explicit mathematical modeling disclosures stating that projections do not represent guaranteed returns or account for sudden market shocks.
+3. **Defensive Financial Numerics**: All numeric computations and websocket price feeds enforce strict `Number.isFinite` validation to uphold the zero-NaN invariant under all network or user inputs.
+
+---
+
 ## Features & Architecture
 
 - 🚀 **Institutional Platform Features Showcase (`#features`)**: High-conversion 6-pillar matrix detailing the Autonomous ReAct AI Quant Engine, Sub-12ms Go execution pipelines, 100% Non-Custodial Cloud KMS envelope encryption, Multi-Regime Grids with 50x perps, Pre-Trade Risk Gates, and Flat SaaS Pricing (0% profit skimming). Features dual-path conversion CTAs and triple risk-reversal trust badges.
-- ⚡ **Interactive Grid ROI Calculator (`#simulator`)**: Live profitability estimator across geometric and arithmetic grid strategies with leverage adjustment.
-- 🤖 **Battle-Tested Strategy Presets (`#strategies`)**: Spot Grid Alpha, Infinity Moon Walker, and 50x Perpetual Momentum presets.
+- ⚡ **Interactive Grid ROI Calculator (`#simulator`)**: Live profitability estimator across geometric and arithmetic grid strategies with leverage adjustment and regulatory disclosure banners.
+- 🤖 **Battle-Tested Strategy Presets (`#strategies`)**: Spot Grid Alpha, Infinity Moon Walker, and 50x Perpetual Momentum presets with simulated backtest tags.
 - 🛡️ **Security Architecture Showcase (`#security`)**: Visual presentation of envelope encryption (AES-256-GCM + Cloud KMS), Goroutine supervisor isolation, and zero-trust auth.
-- 📊 **Real-time Market Tickers**: Dynamic ticker bar for major crypto pairs (BTC/USDT, ETH/USDT, SOL/USDT, etc.).
+- 📊 **Real-time Market Tickers (`LiveTickerBar`)**: Defensive live ticker bar streaming major crypto pairs (BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT) via Binance WebSocket streams.
 - 💎 **Tiered Pricing Matrix (`#pricing`)**: Detailed feature comparison across Free, Trader Pro, and Quantitative Elite subscription tiers.
 - ❓ **FAQ Knowledge Accordion (`#faq`)**: Common trader questions on non-custodial API permissions, latency, and risk mitigation.
 - 🔭 **Enterprise Observability**: Sentry error tracking with strict PII scrubbing (`maskAllInputs: true`, `maskAllText: true`, `blockAllMedia: true`), Server/Client/Edge instrumentation, and global error boundaries.
