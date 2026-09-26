@@ -37,16 +37,17 @@ export const LiveTickerBar: React.FC = () => {
           };
           const cleanSymbol = symbolMap[data.s];
           if (cleanSymbol) {
+            const rawPrice = Number(data.c);
+            const rawChange = Number(data.P);
             setTickers((prev) =>
-              prev.map((t) =>
-                t.symbol === cleanSymbol
-                  ? {
-                      ...t,
-                      price: parseFloat(data.c),
-                      changePct: parseFloat(data.P),
-                    }
-                  : t
-              )
+              prev.map((t) => {
+                if (t.symbol !== cleanSymbol) return t;
+                return {
+                  ...t,
+                  price: Number.isFinite(rawPrice) && rawPrice > 0 ? rawPrice : t.price,
+                  changePct: Number.isFinite(rawChange) ? rawChange : t.changePct,
+                };
+              })
             );
           }
         } catch {

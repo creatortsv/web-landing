@@ -29,5 +29,22 @@ describe('calculateGridRoi', () => {
 
     expect(result.projectedAprPct).toBe(0);
     expect(result.estimatedDailyProfitUsd).toBe(0);
+    expect(result.profitPerGridPct).toBe(0);
+  });
+
+  it('guarantees zero-NaN invariant under non-finite inputs', () => {
+    const result = calculateGridRoi({
+      investmentUsd: NaN,
+      pair: 'BTCUSDT',
+      lowerPrice: Infinity,
+      upperPrice: 90000,
+      gridCount: NaN,
+    });
+
+    expect(Number.isFinite(result.profitPerGridPct)).toBe(true);
+    expect(Number.isFinite(result.projectedAprPct)).toBe(true);
+    expect(Number.isFinite(result.estimatedDailyProfitUsd)).toBe(true);
+    expect(result.projectedAprPct).toBe(0);
+    expect(result.estimatedDailyProfitUsd).toBe(0);
   });
 });

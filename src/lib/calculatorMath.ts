@@ -25,7 +25,16 @@ const VOLATILITY_MAP: Record<string, number> = {
 export function calculateGridRoi(input: GridCalculationInput): GridCalculationResult {
   const { investmentUsd, pair, lowerPrice, upperPrice, gridCount } = input;
 
-  if (lowerPrice <= 0 || upperPrice <= lowerPrice || gridCount < 2 || investmentUsd <= 0) {
+  if (
+    !Number.isFinite(investmentUsd) ||
+    !Number.isFinite(lowerPrice) ||
+    !Number.isFinite(upperPrice) ||
+    !Number.isFinite(gridCount) ||
+    lowerPrice <= 0 ||
+    upperPrice <= lowerPrice ||
+    gridCount < 2 ||
+    investmentUsd <= 0
+  ) {
     return {
       profitPerGridPct: 0,
       estimatedDailyTrades: 0,
@@ -55,11 +64,11 @@ export function calculateGridRoi(input: GridCalculationInput): GridCalculationRe
   const projectedAprPct = (estimatedDailyProfitUsd * 365 / investmentUsd) * 100;
 
   return {
-    profitPerGridPct: Number(profitPerGridPct.toFixed(2)),
-    estimatedDailyTrades,
-    estimatedDailyProfitUsd: Number(estimatedDailyProfitUsd.toFixed(2)),
-    projectedMonthlyProfitUsd: Number(projectedMonthlyProfitUsd.toFixed(2)),
-    projectedAprPct: Number(projectedAprPct.toFixed(1)),
-    gridSpacingUsd: Number(gridSpacingUsd.toFixed(2)),
+    profitPerGridPct: Number.isFinite(profitPerGridPct) ? Number(profitPerGridPct.toFixed(2)) : 0,
+    estimatedDailyTrades: Number.isFinite(estimatedDailyTrades) ? estimatedDailyTrades : 0,
+    estimatedDailyProfitUsd: Number.isFinite(estimatedDailyProfitUsd) ? Number(estimatedDailyProfitUsd.toFixed(2)) : 0,
+    projectedMonthlyProfitUsd: Number.isFinite(projectedMonthlyProfitUsd) ? Number(projectedMonthlyProfitUsd.toFixed(2)) : 0,
+    projectedAprPct: Number.isFinite(projectedAprPct) ? Number(projectedAprPct.toFixed(1)) : 0,
+    gridSpacingUsd: Number.isFinite(gridSpacingUsd) ? Number(gridSpacingUsd.toFixed(2)) : 0,
   };
 }
